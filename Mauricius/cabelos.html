@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cabelos – Mauríciu's</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --black: #000;
+            --white: #fff;
+            --gray-light: #f5f5f5;
+            --gray-mid:   #333;
+            --gray-card:  #1a1a1a;
+            --accent:     #c9a84c;  
+            --font-display: 'Dancing Script', serif;
+            --font-body:    'Roboto Condensed', sans-serif;
+        }
+
+        html, body {
+            font-family: var(--font-body);
+            font-size: 100%;
+            width: 100%;
+            background: var(--white);
+            color: var(--gray-mid);
+        }
+
+        a { text-decoration: none; transition: opacity 0.3s; }
+        a:hover { opacity: 0.6; }
+
+        .header {
+            display: flex;
+            align-items: center;
+            background-color: var(--black);
+            height: 100px;
+            padding: 0 20px;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .header h1 {
+            font-family: var(--font-display);
+            font-size: 4.2em;
+            font-weight: 700;
+            color: var(--white);
+            margin-right: 30px;
+            padding: 10px 0;
+        }
+
+        .header a, .header button {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 10px 20px;
+            border: 2px solid var(--black);
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 20px;
+            transition: background-color 0.3s, color 0.3s;
+            height: auto;
+        }
+
+        .btn:hover, .btn.active {
+            background-color: var(--white);
+            color: var(--black);
+            border: 2px solid var(--black);
+        }
+
+        .hero {
+            background-color: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 70px 20px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 40px,
+                    rgba(255,255,255,0.03) 40px,
+                    rgba(255,255,255,0.03) 41px
+                );
+        }
+
+        .hero h2 {
+            font-family: var(--font-display);
+            font-size: 3.8em;
+            color: var(--white);
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+            color: #ccc;
+            position: relative;
+        }
+
+        .hero-line {
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+            margin: 20px auto 0;
+            position: relative;
+        }
+
+        section { padding: 60px 20px; }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 3.2em;
+            text-align: center;
+            color: var(--black);
+            margin-bottom: 10px;
+        }
+
+        .section-sub {
+            text-align: center;
+            font-size: 1.05rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e0e0e0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .servicos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 28px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .servico-card {
+            background: var(--gray-card);
+            color: #e0e0e0;
+            border-radius: 14px;
+            padding: 32px 28px;
+            border: 1px solid #2a2a2a;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.45);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .servico-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: var(--accent);
+        }
+
+        .servico-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 36px rgba(0,0,0,0.55);
+        }
+
+        .servico-card .icon {
+            font-size: 2.2rem;
+            margin-bottom: 14px;
+        }
+
+        .servico-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.7em;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .servico-card p {
+            font-size: 0.97rem;
+            line-height: 1.6;
+            color: #bbb;
+        }
+
+        .servico-card .tag-genero {
+            display: inline-block;
+            margin-top: 14px;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 700;
+            font-style: normal;
+            font-family: var(--font-body);
+        }
+
+        .produtos-section {
+            background: var(--gray-light);
+        }
+
+        .produtos-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .produto-badge {
+            background: var(--black);
+            color: var(--white);
+            padding: 14px 26px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+
+        .produto-badge:hover { transform: scale(1.05); }
+
+        .produto-badge span.dot {
+            width: 8px; height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .produtos-nota {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1rem;
+            color: #555;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .antes-depois-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .ad-card {
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 6px 22px rgba(0,0,0,0.18);
+            background: var(--black);
+            transition: transform 0.3s;
+        }
+
+        .ad-card:hover { transform: translateY(-5px); }
+
+        .ad-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+        }
+
+        .ad-images img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .ad-divider {
+            position: absolute;
+            left: 50%;
+            top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .ad-label-before,
+        .ad-label-after {
+            position: absolute;
+            top: 10px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: rgba(0,0,0,0.65);
+            color: var(--white);
+            padding: 4px 10px;
+            border-radius: 4px;
+            z-index: 3;
+        }
+        .ad-label-before { left: 8px; }
+        .ad-label-after  { right: 8px; }
+
+        .ad-info {
+            padding: 16px 20px;
+            color: var(--white);
+        }
+
+        .ad-info h4 {
+            font-family: var(--font-display);
+            font-size: 1.4em;
+            margin-bottom: 4px;
+        }
+
+        .ad-info p {
+            font-size: 0.88rem;
+            color: #aaa;
+        }
+
+        .cta-section {
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .cta-section h2 {
+            font-family: var(--font-display);
+            font-size: 3em;
+            color: var(--white);
+            margin-bottom: 14px;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+
+        .btn-agendar {
+            background-color: var(--white);
+            color: var(--black);
+            padding: 16px 40px;
+            border: 2px solid var(--white);
+            font-weight: 700;
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+            display: inline-block;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-agendar:hover {
+            background-color: transparent;
+            color: var(--white);
+        }
+
+        .footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 40px 20px 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-content h3 {
+            font-family: var(--font-display);
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .footer-content a {
+            color: var(--white);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 { font-size: 2.8em; margin-right: 10px; }
+            .btn { font-size: 15px; padding: 8px 12px; }
+            .hero h2 { font-size: 2.6em; }
+            .section-title { font-size: 2.4em; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>Mauriciu's</h1>
+        <a href="home.html"><button class="btn">Home</button></a>
+        <a href="cabelos.html"><button class="btn active">Cabelos</button></a>
+        <a href="estetica.html"><button class="btn">Estética</button></a>
+        <a href="galeria.html"><button class="btn">Galeria</button></a>
+        <a href="agendamento.php"><button class="btn">Agendamento</button></a>
+    </header>
+
+    <div class="hero">
+        <h2>Cabelos & Química</h2>
+        <p>Cortes, colorações e tratamentos com técnica apurada e produtos de alta performance.</p>
+        <div class="hero-line"></div>
+    </div>
+
+    <main>
+
+        <section>
+            <h2 class="section-title">Nossos Serviços</h2>
+            <p class="section-sub">Cada serviço pensado para realçar o melhor de você.</p>
+
+            <div class="servicos-grid">
+
+                <div class="servico-card">
+                    <div class="icon">✂️</div>
+                    <h3>Corte Feminino</h3>
+                    <p>Desde cortes clássicos até as tendências mais modernas — butterfly cut, wolf cut, camadas e muito mais. Cada corte é personalizado ao formato do rosto e ao estilo de vida da cliente.</p>
+                    <em class="tag-genero">Feminino</em>
+                </div>
+
+                <div class="servico-card">
+                    <div class="icon">💈</div>
+                    <h3>Corte Masculino</h3>
+                    <p>Degradês precisos, cortes clássicos e modernos. Acabamento com navalha e finalização profissional para um visual sempre bem cuidado.</p>
+                    <em class="tag-genero">Masculino</em>
+                </div>
+
+                <div class="servico-card">
+                    <div class="icon">💨</div>
+                    <h3>Escova & Modelagem</h3>
+                    <p>Escova modeladora com durabilidade e brilho intenso. Também realizamos babyliss e ondas para ocasiões especiais. Perfeita para o dia a dia ou eventos.</p>
+                    <em class="tag-genero">Feminino · Masculino</em>
+                </div>
+
+                <div class="servico-card">
+                    <div class="icon">🎨</div>
+                    <h3>Coloração</h3>
+                    <p>Tintura permanente ou semipermanente para cobrir brancos ou transformar completamente a cor. Trabalhamos com paletas completas para encontrar o tom ideal para cada cliente.</p>
+                    <em class="tag-genero">Feminino · Masculino</em>
+                </div>
+
+                <div class="servico-card">
+                    <div class="icon">✨</div>
+                    <h3>Luzes & Mechas</h3>
+                    <p>Balayage, californiana, babylights e mechas tradicionais. Técnicas de iluminação que trazem profundidade e movimento ao cabelo com resultado natural ou dramático, conforme o desejo.</p>
+                    <em class="tag-genero">Feminino</em>
+                </div>
+
+                <div class="servico-card">
+                    <div class="icon">🌿</div>
+                    <h3>Progressiva & Alisamento</h3>
+                    <p>Redução de volume e eliminação do frizz com fórmulas de última geração. Resultado liso, sedoso e duradouro — sem agredir a estrutura do fio.</p>
+                    <em class="tag-genero">Feminino · Masculino</em>
+                </div>
+
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="produtos-section">
+            <h2 class="section-title">Produtos que Usamos</h2>
+            <p class="section-sub">Trabalhamos apenas com marcas reconhecidas pela qualidade e segurança.</p>
+
+            <div class="produtos-grid">
+                <div class="produto-badge"><span class="dot"></span> Wella Professionals</div>
+                <div class="produto-badge"><span class="dot"></span> L'Oréal Professionnel</div>
+                <div class="produto-badge"><span class="dot"></span> Kerastase</div>
+                <div class="produto-badge"><span class="dot"></span> Cadiveu</div>
+                <div class="produto-badge"><span class="dot"></span> Schwarzkopf Professional</div>
+                <div class="produto-badge"><span class="dot"></span> Redken</div>
+            </div>
+
+            <p class="produtos-nota" style="margin-top:30px;">
+                O uso de produtos premium garante resultados superiores, maior durabilidade e, acima de tudo, a saúde dos seus fios. Pergunte ao nosso time qual linha é ideal para o seu tipo de cabelo.
+            </p>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2 class="section-title">Antes & Depois</h2>
+            <p class="section-sub">Transformações reais feitas pelos nossos profissionais.</p>
+
+            <div class="antes-depois-grid">
+
+                <div class="ad-card">
+                    <div class="ad-images">
+                        <img src="https://flaviadefreitas.com.br/wp-content/uploads/2016/08/tinturas-permanentes-de-cabelo.jpg" alt="Antes coloração">
+                        <img src="https://pvbeauty.com.br/wp-content/uploads/2024/08/corte-de-cabelo-butterfly-feminino-pv-beauty-09.webp" alt="Depois coloração">
+                        <div class="ad-divider"></div>
+                        <span class="ad-label-before">Antes</span>
+                        <span class="ad-label-after">Depois</span>
+                    </div>
+                    <div class="ad-info">
+                        <h4>Coloração + Corte</h4>
+                        <p>Tintura Wella + butterfly cut</p>
+                    </div>
+                </div>
+
+                <div class="ad-card">
+                    <div class="ad-images">
+                        <img src="https://img77.uenicdn.com/image/upload/v1680563262/business/0c54f045-0326-40eb-9404-751886718726.jpg" alt="Antes mechas">
+                        <img src="https://shadesstudio.com.br/images-t/manicure-pedicure/manicure-pedicure-02.webp" alt="Depois mechas">
+                        <div class="ad-divider"></div>
+                        <span class="ad-label-before">Antes</span>
+                        <span class="ad-label-after">Depois</span>
+                    </div>
+                    <div class="ad-info">
+                        <h4>Mechas Californiana</h4>
+                        <p>Balayage com L'Oréal Professionnel</p>
+                    </div>
+                </div>
+
+                <div class="ad-card">
+                    <div class="ad-images">
+                        <img src="https://flaviadefreitas.com.br/wp-content/uploads/2016/08/tinturas-permanentes-de-cabelo.jpg" alt="Antes progressiva">
+                        <img src="https://pvbeauty.com.br/wp-content/uploads/2024/08/corte-de-cabelo-butterfly-feminino-pv-beauty-09.webp" alt="Depois progressiva">
+                        <div class="ad-divider"></div>
+                        <span class="ad-label-before">Antes</span>
+                        <span class="ad-label-after">Depois</span>
+                    </div>
+                    <div class="ad-info">
+                        <h4>Progressiva Cadiveu</h4>
+                        <p>Alisamento suave com muito brilho</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="cta-section">
+            <h2>Pronta para se transformar?</h2>
+            <p>Agende seu horário e deixe nas mãos dos nossos especialistas.</p>
+            <a href="agendamento.php" class="btn-agendar">Agendar Visita</a>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="contato">
+                <h3>Contato</h3>
+                <p>Telefone: (21) 2475-2033</p>
+                <p>Endereço: Av. Monsenhor Félix, 971 - Irajá, Rio de Janeiro - RJ, 21361-130</p>
+            </div>
+            <div class="horarios">
+                <h3>Funcionamento</h3>
+                <p>Terça a Sábado: 09h às 19h</p>
+            </div>
+            <div class="redes-sociais">
+                <h3>Siga-nos</h3>
+                <a href="https://www.instagram.com/mauricius_coiffeur/">Instagram</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Mauríciu's Cabeleireiro Unissex - Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

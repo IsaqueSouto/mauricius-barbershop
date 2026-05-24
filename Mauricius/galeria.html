@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galeria de Trabalhos</title>
+    <link rel="stylesheet" href="styleGaleria.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Mauriciu's</h1>
+      <img src="" class="Logo" />
+      <a href="home.html"> <button class="btn">Home</button> </a>
+      <a href="cabelos.html"> <button class="btn">Cabelos</button> </a>
+      <a href="estetica.html"> <button class="btn">Estética</button> </a>
+      <a href="galeria.html"> <button class="btn">Galeria</button> </a>
+      <a href="agendamento.php"> <button class="btn">Agendamento</button> </a>
+    </header>
+
+    <main>
+      <section class="galeria-section">
+        <h2>Galeria de Trabalhos</h2>
+        <p>Confira alguns dos nossos melhores resultados.</p>
+
+        <div class="categorias">
+          <button class="btn-categoria" data-categoria="todos">Todos</button>
+          <button class="btn-categoria" data-categoria="cortes">Cortes</button>
+          <button class="btn-categoria" data-categoria="noivas">Noivas & Eventos</button>
+          <button class="btn-categoria" data-categoria="nail">Nail Art</button>
+          <button class="btn-categoria" data-categoria="barbearia">Barbearia</button>
+        </div>
+
+        <div class="grid-galeria">
+          <div class="item-galeria" data-tipo="cortes">
+            <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f" alt="Corte feminino" />
+            <p>Corte Feminino</p>
+          </div>
+
+          <div class="item-galeria" data-tipo="cortes">
+            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df" alt="Coloração" />
+            <p>Coloração Premium</p>
+          </div>
+
+          <div class="item-galeria" data-tipo="nail">
+            <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371" alt="Nail Art" />
+            <p>Nail Art</p>
+          </div>
+
+          <div class="item-galeria" data-tipo="barbearia">
+            <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033" alt="Barbearia" />
+            <p>Barbearia</p>
+          </div>
+
+          <div class="item-galeria" data-tipo="noivas">
+            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e" alt="Noiva" />
+            <p>Penteado para Noivas</p>
+          </div>
+
+          <div class="item-galeria" data-tipo="cortes">
+            <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e" alt="Luzes" />
+            <p>Luzes e Mechas</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="instagram">
+        <h2>Nosso Instagram</h2>
+        <p>Acompanhe nossos trabalhos mais recentes.</p>
+        <a href="https://www.instagram.com/mauricius_coiffeur/" target="_blank" class="btn-agendar"> Ver Instagram </a>
+      </section>
+
+      <section class="videos">
+        <h2>Vídeos dos Resultados</h2>
+        <div class="video-container">
+          <video controls width="600">
+            <source src="https://www.pexels.com/pt-br/download/video/32000083/" type="video/mp4" />
+            Seu navegador não suporta vídeo.
+          </video>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="contato">
+          <h3>Contato</h3>
+          <p>Telefone: (21) 2475-2033</p>
+          <p>Endereço: Av. Monsenhor Félix, 971 - Irajá, Rio de Janeiro - RJ</p>
+        </div>
+
+        <div class="horarios">
+          <h3>Funcionamento</h3>
+          <p>Terça a Sábado: 09h às 19h</p>
+        </div>
+
+        <div class="redes-sociais">
+          <h3>Siga-nos</h3>
+          <a href="https://www.instagram.com/mauricius_coiffeur/">Instagram</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Mauríciu's - Todos os direitos reservados.</p>
+      </div>
+    </footer>
+    <script>
+      const botoes = document.querySelectorAll(".btn-categoria");
+      const itens = document.querySelectorAll(".item-galeria");
+
+      botoes.forEach((botao) => {
+        botao.addEventListener("click", () => {
+          const categoria = botao.getAttribute("data-categoria");
+
+          itens.forEach((item) => {
+            const tipo = item.getAttribute("data-tipo");
+
+            if (categoria === "todos" || tipo === categoria) {
+              item.style.display = "block";
+            } else {
+              item.style.display = "none";
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

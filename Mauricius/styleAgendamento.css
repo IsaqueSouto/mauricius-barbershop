@@ -1,0 +1,380 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+html, body { 
+  font-family: 'Roboto Condensed', sans-serif; 
+  font-size: 100%; 
+  width: 100%; 
+  height: 100%;
+}
+
+h1 {
+  font-family: 'Dancing Script', serif;   
+  font-size: 4.2em; 
+  font-weight: 1000; 
+  margin-right: 30px;
+  padding: 10px 0;
+  color: white;
+}
+
+h2 {
+  font-family: 'Dancing Script', sans-serif;   
+  font-size: 3.2em; 
+  margin-right: 30px;
+  padding: 10px 0;
+  color: black;
+}
+
+.titulo {
+  font-size: 4.2em; 
+  font-weight: 500; 
+  
+  color: white;
+  font-size: 40px;
+  text-align: center;
+}
+
+.sobre p, 
+.agendamento p {
+    font-size: 1.25rem; 
+    line-height: 1.6;    
+    max-width: 700px;    
+    margin-left: auto;
+    margin-right: auto;
+    color: #333;         
+}
+
+.agendamento p {
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+
+a { 
+  text-decoration: none; 
+  transition: 0.5s; 
+}
+a:hover { 
+  opacity: 0.6; 
+}
+
+.header, .footer { 
+  display: flex; 
+  align-items: center; 
+  background-color: black; 
+  height: 100px; 
+}
+
+.header a, .header button {
+    height: 100%;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+
+button{
+    background-color: black;
+    color: white;            
+    padding: 10px 20px;       
+    border: none;       
+    height: auto; 
+    margin: 0;   
+    cursor: pointer;    
+    border: 2px solid black;     
+    font-size: 20px;
+    transition: opacity 0.3s ease;
+    
+}
+
+.btn:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+}
+
+.carrossel {
+  width: 400px; 
+  overflow: hidden; 
+  margin: 20px auto; 
+  background-color: rgb(0, 0, 0);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
+}
+
+.fotos {
+  width: 500%; 
+  display: flex; 
+  animation-name: animacao;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+}
+
+.fotos img {
+   width: 20%;
+   height: auto;
+}
+
+@keyframes animacao {
+    0% { margin-left: 0; }
+    20% { margin-left: 0; }
+    25% { margin-left: -100%; }
+    45% { margin-left: -100%; }
+    50% { margin-left: -200%; }
+    70% { margin-left: -200%; }
+    75% { margin-left: -300%; }
+    95% { margin-left: -300%; }
+    100% { margin-left: -400%; }
+}
+
+section {
+    padding: 40px 20px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.btn-agendar {
+    background-color: black;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border: 2px solid white;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.btn-agendar:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+}
+
+.cards-depoimentos {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.card {
+    background: #1a1a1a; 
+    color: #e0e0e0;      
+    padding: 25px;
+    border-radius: 12px;
+    width: 280px;
+    font-style: italic;
+    border: 1px solid #333; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
+
+}
+
+.card span {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #ffffff;             
+    font-family: 'Roboto Condensed', sans-serif;
+    font-style: normal;        
+    text-transform: uppercase;
+    font-size: 0.8em;
+    letter-spacing: 1px;
+}
+
+
+.footer {
+    background-color: black; 
+    color: white;
+    padding: 40px 20px 20px;
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.footer-content h3 {
+    font-family: 'Dancing Script', serif;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.footer-content a {
+    color: white;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    font-size: 0.9em;
+}
+
+.form-section {
+    padding: 70px 20px;
+    background: #cfcfcf; 
+}
+
+.form-agendamento {
+    display: flex;
+    flex-direction: column;
+    max-width: 450px;
+    margin: 40px auto;
+    padding: 30px;
+
+    background: #a6a6a6; 
+    border-radius: 16px;
+
+    border: 1px solid #888;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+    text-align: left;
+}
+
+.form-agendamento div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px; 
+}
+
+.form-agendamento label {
+    font-size: 17px; 
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 4px; 
+}
+
+.form-agendamento input,
+.form-agendamento select {
+    padding: 12px 14px; 
+    font-size: 14px;
+
+    border-radius: 10px;
+    border: 1px solid #666;
+
+    background: #e0e0e0; 
+    color: #000;
+
+    transition: 0.25s;
+}
+
+.form-agendamento input:focus,
+.form-agendamento select:focus {
+    border-color: black;
+    background: #fff;
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+    outline: none;
+}
+
+.form-agendamento button {
+    margin-top: 8px;
+    padding: 14px;
+
+    background: black;
+    color: white;
+
+    border: 2px solid black;
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-agendamento button:hover {
+    background: white;
+    opacity: 0.6;
+    color: black;
+    transform: translateY(-2px);
+}
+
+/* <--- MOBILE-FIRST ---> */
+
+@media (max-width: 768px) {
+
+  h1 {
+    font-size: 2.2em;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  .header {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .header a, .header button {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+
+  .carrossel {
+    width: 100%;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .form-agendamento {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .footer {
+    height: auto;
+    padding: 30px 20px;
+
+    display: flex;
+    flex-direction: column; 
+  }
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .footer-content div {
+    width: 100%;
+  }
+
+  .footer-bottom {
+    width: 100%;
+    margin-top: 25px;
+    padding-top: 15px;
+
+    border-top: 1px solid #333;
+
+    text-align: center;
+    display: block; 
+  }
+
+  .footer-bottom p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+}
